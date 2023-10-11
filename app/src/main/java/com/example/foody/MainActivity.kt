@@ -7,24 +7,21 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.foody.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+
+    private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Set up navigation
         navController = findNavController(R.id.navHostFragment)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-
-        // Set up action bar
         val appBarConfiguration = AppBarConfiguration(
-            // top level destinations
             setOf(
                 R.id.recipesFragment,
                 R.id.favoriteRecipesFragment,
@@ -32,9 +29,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        // Set up bottom navigation
-        bottomNavigationView.setupWithNavController(navController)
-        // Set up action bar with navigation
+        binding.bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
