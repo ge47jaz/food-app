@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+
 // tell hilt how to provide retrofit builder to remote data source
 @Module
 @InstallIn(SingletonComponent::class)
